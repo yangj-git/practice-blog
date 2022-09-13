@@ -1,9 +1,10 @@
+import './App.scss'
+
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Layout from '@/pages/Layout'
-import Login from '@/pages/Login'
+import Login from './pages/Login';
 import { Button } from 'antd';
 
-import './App.scss'
 
 function App() {
   return (
