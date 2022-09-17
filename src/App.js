@@ -1,15 +1,13 @@
-import './App.scss'
+import '@/App.scss'
 
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Layout from '@/pages/Layout'
-import Login from './pages/Login';
-import { Button } from 'antd';
+import Login from '@/pages/Login';
 
 
 function App() {
   return (
     <BrowserRouter>
-      <Button type='primary'>Test Button</Button>
       <div className='App'>
         <Routes>
           <Route path='/' element={<Layout/>}/>
