@@ -1,3 +1,7 @@
-import { http } from './http'
+export { http } from './http'
 
-export { http }
+export {
+	setToken,
+	getToken,
+	removeToken
+} from './token'

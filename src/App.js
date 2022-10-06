@@ -3,6 +3,7 @@ import '@/App.scss'
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Layout from '@/pages/Layout'
 import Login from '@/pages/Login';
+import { AuthComponent } from './components/AuthComponent';
 
 
 function App() {
@@ -10,7 +11,11 @@ function App() {
     <BrowserRouter>
       <div className='App'>
         <Routes>
-          <Route path='/' element={<Layout/>}/>
+          <Route path='/' element={
+            <AuthComponent>
+              <Layout/>
+            </AuthComponent>
+          }/>
           <Route path='/login' element={<Login/>}/>
         </Routes>
       </div>
