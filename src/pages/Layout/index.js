@@ -1,11 +1,14 @@
 import { Layout, Menu, Popconfirm, Breadcrumb } from 'antd'
-import { Outlet, Link } from 'react-router-dom'
+import { Outlet, Link, NavLink, useLocation } from 'react-router-dom'
 import { HomeOutlined, DiffOutlined, EditOutlined, LogoutOutlined } from '@ant-design/icons'
 import './index.scss'
 
 const { Header, Content, Sider } = Layout
 
 function AdminLayout() {
+  const location = useLocation()
+  const selectedKey = location.pathname
+
   return (
     <Layout>
       <Header className="header">
@@ -23,21 +26,22 @@ function AdminLayout() {
         <Sider width={200} className="site-layout-background">
           <Menu
             mode="inline"
-            defaultSelectedKeys={['1']}
-            defaultOpenKeys={['1']}
+            // defaultSelectedKeys={['1']}
+            // defaultOpenKeys={['1']}
+            selectedKeys={[selectedKey]}
             style={{
               height: '100%',
               borderRight: 0,
             }}
           >
-            <Menu.Item icon={<HomeOutlined />} key="1">
-              <Link to={'/'}>数据概览</Link>
+            <Menu.Item icon={<HomeOutlined />} key="/">
+              <NavLink to={'/'}>数据概览</NavLink>
             </Menu.Item>
-            <Menu.Item icon={<DiffOutlined />} key="2">
-            <Link to={'/article'}>内容管理</Link>
+            <Menu.Item icon={<DiffOutlined />} key="/article">
+            <NavLink to={'/article'}>内容管理</NavLink>
             </Menu.Item>
             <Menu.Item icon={<EditOutlined />} key="3">
-            <Link to={'/publish'}>发布文章</Link>
+            <NavLink to={'/publish'}>发布文章</NavLink>
             </Menu.Item>
           </Menu>
         </Sider>
@@ -47,15 +51,6 @@ function AdminLayout() {
           }}
           className="layout-content"
         >
-          <Breadcrumb
-            style={{
-              margin: '16px 0',
-            }}
-          >
-            <Breadcrumb.Item>Home</Breadcrumb.Item>
-            <Breadcrumb.Item>List</Breadcrumb.Item>
-            <Breadcrumb.Item>App</Breadcrumb.Item>
-          </Breadcrumb>
           <Content
             className="site-layout-background"
             style={{
