@@ -1,4 +1,5 @@
 import { Layout, Menu, Popconfirm, Breadcrumb } from 'antd'
+import { Outlet, Link } from 'react-router-dom'
 import { HomeOutlined, DiffOutlined, EditOutlined, LogoutOutlined } from '@ant-design/icons'
 import './index.scss'
 
@@ -30,13 +31,13 @@ function AdminLayout() {
             }}
           >
             <Menu.Item icon={<HomeOutlined />} key="1">
-              数据概览
+              <Link to={'/'}>数据概览</Link>
             </Menu.Item>
             <Menu.Item icon={<DiffOutlined />} key="2">
-              内容管理
+            <Link to={'/article'}>内容管理</Link>
             </Menu.Item>
             <Menu.Item icon={<EditOutlined />} key="3">
-              发布文章
+            <Link to={'/publish'}>发布文章</Link>
             </Menu.Item>
           </Menu>
         </Sider>
@@ -63,7 +64,7 @@ function AdminLayout() {
               minHeight: 320,
             }}
           >
-            内容
+            <Outlet/>
           </Content>
         </Layout>
       </Layout>

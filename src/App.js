@@ -5,6 +5,9 @@ import AdminLayout from '@/pages/Layout'
 import Login from '@/pages/Login';
 import { AuthComponent } from './components/AuthComponent';
 
+import Home from '@/pages/Home'
+import Article from '@/pages/Article'
+import Publish from '@/pages/Publish'
 
 function App() {
   return (
@@ -15,7 +18,11 @@ function App() {
             <AuthComponent>
               <AdminLayout/>
             </AuthComponent>
-          }/>
+          }>
+            <Route index element={<Home/>}/>
+            <Route path='/article' element={<Article/>}/>
+            <Route path='/publish' element={<Publish/>}/>
+          </Route>
           <Route path='/login' element={<Login/>}/>
         </Routes>
       </div>
