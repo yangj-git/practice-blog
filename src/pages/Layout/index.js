@@ -1,8 +1,8 @@
-import { Layout, Menu, Popconfirm } from 'antd'
+import { Layout, Menu, Popconfirm, Breadcrumb } from 'antd'
 import { HomeOutlined, DiffOutlined, EditOutlined, LogoutOutlined } from '@ant-design/icons'
 import './index.scss'
 
-const { Header, Sider } = Layout
+const { Header, Content, Sider } = Layout
 
 function AdminLayout() {
   return (
@@ -19,8 +19,16 @@ function AdminLayout() {
         </div>
       </Header>
       <Layout>
-        <Sider className="site-layout-background">
-          <Menu defaultSelectedKeys={['1']}>
+        <Sider width={200} className="site-layout-background">
+          <Menu
+            mode="inline"
+            defaultSelectedKeys={['1']}
+            defaultOpenKeys={['1']}
+            style={{
+              height: '100%',
+              borderRight: 0,
+            }}
+          >
             <Menu.Item icon={<HomeOutlined />} key="1">
               数据概览
             </Menu.Item>
@@ -32,7 +40,32 @@ function AdminLayout() {
             </Menu.Item>
           </Menu>
         </Sider>
-        <Layout className="layout-content">内容</Layout>
+        <Layout
+          style={{
+            padding: '0 24px 24px',
+          }}
+          className="layout-content"
+        >
+          <Breadcrumb
+            style={{
+              margin: '16px 0',
+            }}
+          >
+            <Breadcrumb.Item>Home</Breadcrumb.Item>
+            <Breadcrumb.Item>List</Breadcrumb.Item>
+            <Breadcrumb.Item>App</Breadcrumb.Item>
+          </Breadcrumb>
+          <Content
+            className="site-layout-background"
+            style={{
+              padding: 24,
+              margin: 0,
+              minHeight: 320,
+            }}
+          >
+            内容
+          </Content>
+        </Layout>
       </Layout>
     </Layout>
   )
